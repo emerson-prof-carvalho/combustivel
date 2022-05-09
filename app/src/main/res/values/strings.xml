@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Combustível</string>
+    <string name="app_title">Álcool ou Gasolina</string>
+    <string name="button_calculate_text">Calcular</string>
+    <string name="gas_station_image_description">Posto de gasolina</string>
+    <string name="ethanol_value_hint">Valor do Etanol, ex: 5.99</string>
+    <string name="gas_value_hint">Valor da Gasolina, ex: 7.99</string>
+    <string name="better_option_ethanol">Melhor usar Etanol</string>
+    <string name="better_option_gas">Melhor usar Gasolina</string>
+    <string name="alert_title">Preços de qual Posto?</string>
+    <string name="input_edit_text_gas_hint">Informe o valor do Álcool</string>
+    <string name="input_edit_text_ethanol_hint">Informe o valor da Gasolina</string>
+    <string name="alert_positive_button">Enviar</string>
+    <string name="alert_negative_button">Cancelar</string>
+</resources>

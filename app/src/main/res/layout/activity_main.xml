@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:context=".MainActivity">
+
+        <ImageView
+            android:id="@+id/imageViewTopId"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:contentDescription="@string/gas_station_image_description"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toTopOf="@+id/guideLineTopId"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/gas_station_2" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideLineTopId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.3" />
+
+        <TextView
+            android:id="@+id/textViewTitleId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/simple_margin"
+            android:background="@color/blue_700"
+            android:padding="@dimen/title_padding"
+            android:text="@string/app_title"
+            android:textColor="@color/white"
+            android:textSize="@dimen/title_text_size"
+            app:layout_constraintBottom_toTopOf="@+id/guideLineTopId"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideLineTopId"
+            tools:ignore="TextContrastCheck" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/simple_margin"
+            android:layout_marginTop="@dimen/triple_margin"
+            android:layout_marginEnd="@dimen/simple_margin"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewTitleId">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/imputEditTextEtanolValueId"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="@string/ethanol_value_hint"
+                android:inputType="numberDecimal"
+                android:textSize="@dimen/default_text_size" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/simple_margin"
+            android:layout_marginTop="@dimen/simple_margin"
+            android:layout_marginEnd="@dimen/simple_margin"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/imputEditTextGasValueId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/gas_value_hint"
+                android:inputType="numberDecimal"
+                android:textSize="20sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/buttonCalculateId"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="@dimen/simple_margin"
+            android:layout_marginTop="@dimen/simple_margin"
+            android:layout_marginEnd="@dimen/simple_margin"
+            android:onClick="buttonCalculateClick"
+            android:text="@string/button_calculate_text"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout2"
+            tools:ignore="UsingOnClickInXml" />
+
+        <ImageView
+            android:id="@+id/imageViewResultId"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="@dimen/simple_margin"
+            android:layout_marginTop="@dimen/triple_margin"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toStartOf="@+id/textViewTipId"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/buttonCalculateId"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/textViewTipId"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/simple_margin"
+            android:text="TextView"
+            android:textSize="@dimen/default_text_size"
+            app:layout_constraintBottom_toBottomOf="@+id/imageViewResultId"
+            app:layout_constraintEnd_toStartOf="@+id/imageViewShareId"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/imageViewResultId"
+            app:layout_constraintTop_toTopOf="@+id/imageViewResultId"
+            tools:ignore="HardcodedText" />
+
+        <ImageView
+            android:id="@+id/imageViewShareId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/simple_margin"
+            android:layout_marginEnd="@dimen/simple_margin"
+            android:onClick="imageViewShareClick"
+            app:layout_constraintBottom_toBottomOf="@+id/textViewTipId"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/textViewTipId"
+            app:layout_constraintTop_toTopOf="@+id/textViewTipId"
+            app:srcCompat="@drawable/ic_baseline_share_24"
+            tools:ignore="ContentDescription, UsingOnClickInXml,SpeakableTextPresentCheck"
+            tools:srcCompat="@drawable/ic_baseline_share_24" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
+
