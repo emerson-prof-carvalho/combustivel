@@ -2,6 +2,7 @@ package br.edu.ifsuldeminas.combustivel;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +17,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.textfield.TextInputEditText;
 
+import java.util.Objects;
+
 public class MainActivity extends AppCompatActivity {
 
     private TextInputEditText textInputEditTextEthanol;
@@ -26,6 +29,11 @@ public class MainActivity extends AppCompatActivity {
     private TextView textViewTip;
     private double ethanolValue, gasValue;
     private String betterOption;
+
+    private SharedPreferences preferences;
+    private static final String PREFS_KEY = "fuel_prefs";
+    private static final String PRECO_ETANOL = "preco_etanol";
+    private static final String PRECO_GAS = "preco_gas";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +46,8 @@ public class MainActivity extends AppCompatActivity {
         imageViewResult = findViewById(R.id.imageViewResultId);
         imageViewShare = findViewById(R.id.imageViewShareId);
         textViewTip = findViewById(R.id.textViewTipId);
+
+        preferences = getSharedPreferences(PREFS_KEY, MODE_PRIVATE);
     }
 
     @Override
@@ -126,5 +136,40 @@ public class MainActivity extends AppCompatActivity {
         });
 
         builder.create().show();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+        SharedPreferences.Editor editor = preferences.edit();
+
+        String precoEtanol = textInputEditTextEthanol.getText().toString();
+        if (!"".equals(precoEtanol)){
+            editor.putString(PRECO_ETANOL, precoEtanol);
+            editor.apply();
+        }
+
+        String precoGas = Objects.requireNonNull(textInputEditTextGas.getText()).toString();
+        if (!precoGas.isEmpty()){
+            editor.putString(PRECO_GAS, precoGas);
+            editor.apply();
+        }
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        if (preferences.contains(PRECO_ETANOL)) {
+            var precoEtanol = preferences.getString(PRECO_ETANOL, "");
+            textInputEditTextEthanol.setText(precoEtanol);
+        }
+
+        if (preferences.contains(PRECO_GAS)) {
+            var precoGas = preferences.getString(PRECO_GAS, "");
+            textInputEditTextGas.setText(precoGas);
+        }
     }
 }
